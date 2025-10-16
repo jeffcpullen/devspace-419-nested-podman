@@ -42,3 +42,35 @@ oc apply -f scc-nested-podman.yaml
 ```
 /bin/bash update-custom-tiles.sh
 ```
+
+## Update the workspace image
+
+### Run a podman build
+
+```
+cd workspace-image
+podman build -t quay.io/jpullen0/ansible-devspaces-nested-podman .
+```
+
+### Push with an updated tag and to latest. 
+
+* Check what the last tag was at https://quay.io/repository/jpullen0/ansible-devspaces-nested-podman?tab=tags
+
+* Tag the image with the updated tag
+
+```
+podman tag quay.io/jpullen0/ansible-devspaces-nested-podman quay.io/jpullen0/ansible-devspaces-nested-podman:<TAG>
+```
+
+### Login to registry
+
+```
+podman login quay.io/jpullen0
+```
+
+### Push the image with the specific tag and to latest
+
+```
+podman push quay.io/jpullen0/ansible-devspaces-nested-podman:<TAG>
+podman push quay.io/jpullen0/ansible-devspaces-nested-podman:latest
+```
