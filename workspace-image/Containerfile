@@ -7,7 +7,7 @@ ENV HOME=${USER_HOME_DIR} \
 
 COPY --chown=0:0 entrypoint.sh /
 
-RUN dnf --disableplugin=subscription-manager --nodocs --allowerasing install -y openssl git tar shadow-utils bash zsh podman buildah skopeo python3.11-devel python3.11 python3.11-pip aardvark-dns ; \
+RUN dnf --disableplugin=subscription-manager --nodocs --allowerasing install -y python3-psycopg2 openssl git tar shadow-utils bash zsh podman buildah skopeo python3.11-devel python3.11 python3.11-pip aardvark-dns ; \
     dnf update -y ; \
     dnf clean all ; \
     mkdir -p ${WORK_DIR} ; \
